@@ -22,7 +22,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php" : ">=8.0.0"
+        "php" : ">=8.0.0",
+        "laravel/framework": ">=8.0.0"
     },
     "extra": {
         "laravel": {
@@ -30,7 +31,7 @@
                 "Vioms\\Countries\\ServiceProvider"
             ],
             "aliases": {
-                "Debugbar": "Vioms\\Countries\\Facade"
+                "Countries": "Vioms\\Countries\\Facade"
             }
         }
     },

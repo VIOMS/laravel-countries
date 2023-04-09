@@ -14,9 +14,7 @@ This package can be used standalone or can be combined with:
 
 ## Installation
 
-Add `vioms/laravel-countries` to `composer.json`.
-
-    "vioms/laravel-countries": "dev-master"
+Runs `composer require vioms/laravel-countries` to install the package
 
 Run `composer update` to pull down the latest version of Country List.
 
@@ -28,6 +26,7 @@ You can start by publishing the configuration. This is an optional step, it cont
 
 You may now run it with the artisan migrate command:
 
-    $ php artisan migrate --seed
+    $ php artisan migrate
+    $ php artisan db:seed --class=CountriesSeeder
 
 After running this command the filled countries table will be available

@@ -1,6 +1,6 @@
 <?php
 
-namespace seeders;
+namespace Database\Seeders;
 
 use Countries;
 use DB;
