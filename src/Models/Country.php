@@ -4,8 +4,8 @@ namespace Vioms\Countries\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property-read flag_image
- * @property-read flagImage
+ * @property-read $flag_image
+ * @property-read $flagImage
  */
 class Country extends Model
 {
@@ -25,6 +25,12 @@ class Country extends Model
     protected $countries = [];
 
     protected $table;
+
+    protected $casts = [
+        'languages' => 'json',
+        'neighbour_codes' => 'json',
+        'neighbour_ids' => 'json',
+    ];
 
     public function __construct()
     {

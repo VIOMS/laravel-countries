@@ -1,3 +1,4 @@
 vendor
 composer.lock
 .idea
+resources/countries-validate.json

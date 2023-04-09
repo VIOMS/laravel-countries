@@ -32,6 +32,15 @@ return new class extends Migration {
             $table->char('sub_region_code', 3)->default('');
             $table->boolean('eea')->default(0);
             $table->string('calling_code', 3)->nullable();
+            $table->bigInteger('population')->nullable();
+            $table->bigInteger('area_in_km')->nullable();
+            $table->string('postal_code_regex')->nullable();
+            $table->string('postal_code_format')->nullable();
+            $table->string('continent')->nullable();
+            $table->json('languages')->nullable();
+            $table->json('neighbour_codes')->nullable();
+            $table->json('neighbour_ids')->nullable();
+            $table->string('tld', 10)->nullable();
             $table->string('flag', 6)->nullable();
         });
     }
