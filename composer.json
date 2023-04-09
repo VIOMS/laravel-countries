@@ -1,0 +1,40 @@
+{
+    "name": "vioms/laravel-countries",
+    "description": "Laravel Countries is a bundle for Laravel, providing Almost ISO 3166_2, 3166_3, currency, Capital and more for all countries.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "laravel",
+        "countries",
+        "iso_3166_2",
+        "iso_3166_3"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Vioms\\Countries\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sven",
+            "email": "sven@vioms.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php" : ">=8.0.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vioms\\Countries\\ServiceProvider"
+            ],
+            "aliases": {
+                "Debugbar": "Vioms\\Countries\\Facade"
+            }
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "7.x-dev"
+    }
+}
