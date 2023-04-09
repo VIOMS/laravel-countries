@@ -31,7 +31,7 @@
                 "Vioms\\Countries\\ServiceProvider"
             ],
             "aliases": {
-                "Countries": "Vioms\\Countries\\Facade"
+                "Countries": "Vioms\\Countries\\CountriesFacade"
             }
         }
     },
