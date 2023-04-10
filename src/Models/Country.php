@@ -1,4 +1,5 @@
 <?php
+
 namespace Vioms\Countries\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +31,37 @@ class Country extends Model
         'languages' => 'json',
         'neighbour_codes' => 'json',
         'neighbour_ids' => 'json',
+        'eea' => 'boolean',
+    ];
+
+    protected $fillable = [
+        'id',
+        'capital',
+        'citizenship',
+        'country-code',
+        'currency',
+        'currency_code',
+        'currency_sub_unit',
+        'full_name',
+        'iso_3166_2',
+        'iso_3166_3',
+        'name',
+        'region-code',
+        'sub-region-code',
+        'eea',
+        'calling_code',
+        'currency_symbol',
+        'currency_decimals',
+        'flag',
+        'area_in_km',
+        'population',
+        'continent',
+        'tld',
+        'postal_code_format',
+        'postal_code_regex',
+        'languages',
+        'neighbour_codes',
+        'neighbour_codes_ids',
     ];
 
     public function __construct()
@@ -81,19 +113,19 @@ class Country extends Model
             'flag',
         ];
 
-        if (!is_null($sort) && in_array($sort, $validSorts)){
-            uasort($countries, function($a, $b) use ($sort) {
-                if($a instanceof Model) {
+        if (!is_null($sort) && in_array($sort, $validSorts)) {
+            uasort($countries, function ($a, $b) use ($sort) {
+                if ($a instanceof Model) {
                     $a = $a->toArray();
                 }
-                if($b instanceof Model) {
+                if ($b instanceof Model) {
                     $b = $b->toArray();
                 }
-                if (!isset($a[$sort]) && !isset($b[$sort])){
+                if (!isset($a[$sort]) && !isset($b[$sort])) {
                     return 0;
-                } elseif (!isset($a[$sort])){
+                } elseif (!isset($a[$sort])) {
                     return -1;
-                } elseif (!isset($b[$sort])){
+                } elseif (!isset($b[$sort])) {
                     return 1;
                 } else {
                     return strcasecmp($a[$sort], $b[$sort]);
@@ -128,19 +160,19 @@ class Country extends Model
      */
     protected function fetchCountries()
     {
-        if(!empty($this->countries)) {
+        if (!empty($this->countries)) {
             return $this->countries;
         }
 
         $type = config('countries.cache', self::LOAD_FILE);
-        if($type === self::LOAD_CACHE && \Cache::has(__FUNCTION__)) {
+        if ($type === self::LOAD_CACHE && \Cache::has(__FUNCTION__)) {
             return $this->countries = \Cache::get(__FUNCTION__);
-        }elseif($type === self::LOAD_DB) {
+        } elseif ($type === self::LOAD_DB) {
             return $this->countries = $this->get()->pluck(null, 'id')->toArray();
         }
 
-        $this->countries = json_decode(file_get_contents(implode(DIRECTORY_SEPARATOR, [__DIR__,'../../resources/countries.json'])), true);
-        if($type === self::LOAD_CACHE) {
+        $this->countries = json_decode(file_get_contents(implode(DIRECTORY_SEPARATOR, [__DIR__, '../../resources/countries.json'])), true);
+        if ($type === self::LOAD_CACHE) {
             \Cache::put(__FUNCTION__, $this->countries);
         }
         return $this->countries;
