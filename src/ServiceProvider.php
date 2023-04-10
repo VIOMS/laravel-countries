@@ -61,7 +61,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->app->bind('countries', function($app)
         {
-            return new \Vioms\Countries\Models\City();
+            return new \Vioms\Countries\Models\Country();
         });
     }
 
