@@ -64,10 +64,10 @@ class Country extends Model
         'neighbour_codes_ids',
     ];
 
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
         $this->table = config('countries.table', 'countries');
-        parent::__construct();
+        parent::__construct($attributes);
     }
 
     public function getFlagImageAttribute()
